@@ -1,0 +1,46 @@
+# SimplyGone
+# Simple Blender game to make a shape appear then disappear
+# https://github.com/quazipseudo/SimplyGone
+
+import bge
+import bpy
+
+def run():   
+
+    cont = bge.logic.getCurrentController()     # Gets player input
+    own = cont.owner                            # Defines who "has" the controller
+    scene = cont.owner.scene                    # Defines the current scene so inactive objects can be accessed 
+    key = bge.logic.keyboard.events             # Determines which key is pressed
+    pressed = bge.logic.KX_INPUT_JUST_ACTIVATED # Determines WHEN a key is pressed
+    target = None                               # Default setting.
+    shape = scene.objectsInactive['Ball']       # Make variable 'shape' and set to Cube.
+    #    endObject = KX_SCA_EndObjectActuator(SCA_IActuator)
+    #    endObject = bge.logic.endObject()
+    #    endObject = KX_SCA_EndObjectActuator(SCA_IActuator)
+    
+    if key[bge.events.PAD5] == pressed:                 # If 5 key is pressed:
+        target = scene.objects['Empty1']                # Find where it goes: (Empty1).
+        new_piece = scene.addObject(shape)              # Create the piece..
+        new_piece.worldPosition = target.worldPosition  # and place it.
+
+    if key[bge.events.PAD0] == pressed:
+        #new_piece = scene.endObject(shape)     # 'KX_Scene' object has no attribute 'endObject'
+        #shape = scene.endObject(shape)         # 'KX_Scene' object has no attribute 'endObject'
+        #scene.endObject(shape)                 # 'KX_Scene' object has no attribute 'endObject'                  
+        #shape = scene.endObject()              # 'KX_Scene' object has no attribute 'endObject'
+        #scene.endObject()                      # 'KX_Scene' object has no attribute 'endObject'
+        #objectLastCreated = scene.endObject()  # 'KX_Scene' object has no attribute 'endObject'
+        #objectLastCreated.end()                # 'objectLastCreated' is not defined
+        #shape.end()                            # 'KX_GameObject' object has no attribute 'end'
+        #objectLastCreated.endObject()          # 'objectLastCreated' is not defined
+        #endObject(Ball)                        # 'endObject' is not defined
+        #Ball.endObject()                       # 'Ball' is not defined
+        #new_piece.endObject()                  # local variable 'new_piece' referenced before assignment
+        #endObject(new_piece)                   # 'endObject' is not defined
+        #own.endObject()                        # Does nothing. Game works otherwise.
+        #Empty1.endObject(new_piece)            # Empty1 is not defined
+        #own.endObject(new_piece)               # local variable 'new_piece' referenced before assignment
+        #own.objectLastCreated.endObject()      #'KX_GameObject' object has no attribute 'objectLastCreated'  
+ 
+run()
+print('END')                                    # Visual Aid 
